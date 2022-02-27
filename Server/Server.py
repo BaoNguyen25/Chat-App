@@ -52,7 +52,7 @@ def client_communication(person):
             if msg == bytes("{quit}", "utf8"):  # disconnect client if message is quit
                 client.close()
                 persons.remove(person)
-                broadcast(f"{name} has left the chat...", "")
+                broadcast(bytes(f"{name} has left the chat...", "utf8"), "")
                 print(f"[DISCONNECTED] {name} disconnected")
                 break
             else:  # send messages to all others clients
@@ -85,7 +85,7 @@ def wait_for_connection():
 
 
 if __name__ == "__main__":
-    SERVER.listen(MAX_CONNECTIONS)  # Listen for connections
+    SERVER.listen(MAX_CONNECTIONS)  # Open server to listen for connections
     print("[STARTED] Waiting for connections...")
     ACCEPT_THREAD = Thread(target=wait_for_connection)
     ACCEPT_THREAD.start()
