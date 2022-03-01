@@ -1,4 +1,4 @@
-from Client import Client
+from client import Client
 from threading import Thread
 import time
 

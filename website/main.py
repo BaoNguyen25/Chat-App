@@ -2,7 +2,7 @@ from flask import Flask, render_template, url_for, session, redirect, request
 
 NAME_KEY = "name"
 
-app = Flask(__name__, template_folder='Application/Templates')
+app = Flask(__name__, template_folder='application/templates')
 app.secret_key = "hellomynameisbaonguyen"
 
 

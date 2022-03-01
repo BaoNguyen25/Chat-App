@@ -1,7 +1,7 @@
 from socket import AF_INET, socket, SOCK_STREAM
 from threading import Thread
 import time
-from Person import Person
+from person import Person
 
 # GLOBAL CONSTANTS
 HOST = "localhost"
