@@ -87,12 +87,10 @@ socket.on("connect", async function () {
     });
   });
 });
-
 socket.on("disconnect", async function (msg) {
   var usr_name = await load_name();
   socket.emit("event", {
     message: usr_name + " just left the server...",
-    name: usr_name
   });
 });
 socket.on("message response", function (msg) {
@@ -108,6 +106,13 @@ window.onload = async function () {
     }
     add_messages(msgs[i], scroll);
   }
+
+  let name = await load_name()
+  if(name != ""){
+    $("#login").hide();
+  }
+  else
+    $("#logout").hide();
 }
 
 async function add_messages(msg, scroll) {
@@ -121,25 +126,9 @@ async function add_messages(msg, scroll) {
     }
     var global_name = await load_name();
 
-    var content =
-      '<div class="container">' +
-      '<b style="color:#000" class="right">' +
-      msg.name +
-      "</b><p>" +
-      msg.message +
-      '</p><span class="time-right">' +
-      n +
-      "</span></div>";
+    var content = '<div class="container">' + '<b style="color:#000" class="right">' + msg.name + "</b><p>" + msg.message + '</p><span class="time-right">' + n + "</span></div>";
     if (global_name == msg.name) {
-      content =
-        '<div class="container darker">' +
-        '<b style="color:#000" class="left">' +
-        msg.name +
-        "</b><p>" +
-        msg.message +
-        '</p><span class="time-left">' +
-        n +
-        "</span></div>";
+      content = '<div class="container darker">' + '<b style="color:#000" class="left">' + msg.name + "</b><p>" +msg.message + '</p><span class="time-left">' + n + "</span></div>";
     }
     // update div
     var messageDiv = document.getElementById("messages");

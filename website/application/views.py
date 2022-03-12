@@ -48,6 +48,17 @@ def logout():
     return redirect(url_for("views.login"))
 
 
+@view.route("/history")
+def history():
+    if NAME_KEY not in session:
+        flash("Please login before viewing message history")
+        return redirect(url_for("views.login"))
+
+    json_messages = get_history(session[NAME_KEY])
+    return render_template("history.html", **{"history": json_messages})
+
+
+
 @view.route("/")
 @view.route("/home")
 def home():
@@ -80,13 +91,36 @@ def get_messages():
     """
     db = DataBase()
     msgs = db.get_all_messages(MSG_LIMIT)
+    messages = remove_seconds_from_messages(msgs)
+
+    return jsonify(messages)
+
+
+@view.route("/get_history")
+def get_history(name):
+    """
+    return all messages by name of user
+    :param name: str
+    """
+    db = DataBase()
+    msgs = db.get_message_by_name(name)
+    messages = remove_seconds_from_messages(msgs)
+
+    return messages
+
+
+def remove_seconds_from_messages(msgs):
+    """
+    remove the seconds from all messages
+    :param msgs: list
+    :return: list
+    """
     messages = []
     for msg in msgs:
         message = msg
         message["time"] = remove_seconds(message["time"])
         messages.append(message)
-
-    return jsonify(msgs)
+    return messages
 
 
 def remove_seconds(msg):

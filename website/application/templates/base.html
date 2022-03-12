@@ -53,6 +53,9 @@
               float: left;
               color: #999;
             }
+            .bgc {
+                background:#778899;
+            }
 
         </style>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -61,7 +64,7 @@
     </head>
     <body>
 
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-dark bgc">
           <h1 class="navbar-brand" href="#">CHAT APP</h1>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -79,7 +82,7 @@
        {% block messages %}
             {% with messages = get_flashed_messages() %}
               {% if messages %}
-                <div class="alert alert-dark" role="alert">
+                <div class="alert alert-danger" role="alert">
                     {% for message in messages %}
                       {{ message }}
                     {% endfor %}
@@ -88,10 +91,10 @@
             {% endwith %}
         {% endblock %}
 
-        <div class="container">
-            {% block content %}
-            {% endblock %}
-        </div>
+
+        {% block content %}
+        {% endblock %}
+
 
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.6/dist/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>

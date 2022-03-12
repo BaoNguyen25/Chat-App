@@ -53,7 +53,7 @@ class DataBase:
             self.cursor.execute(query)
         else:
             query = f"SELECT * FROM {PLAYLIST_TABLE} WHERE NAME = ?"
-            self.cursor.excute(query, (name,))
+            self.cursor.execute(query, (name,))
 
         result = self.cursor.fetchall()
 
