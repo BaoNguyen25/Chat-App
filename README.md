@@ -1,6 +1,6 @@
 # Chat-App
 
-###A simple real-time chat application implementation using Socket.io, Flask, SQLite, jQuery and Bootstrap
+### A simple real-time chat application implementation using Socket.io, Flask, SQLite, jQuery and Bootstrap
 ![](website/application/img/home.png)
 
 ## Setup
